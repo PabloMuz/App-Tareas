@@ -2,7 +2,7 @@ import CrossIcon from "./icons/components/CrossIcon";
 import Moon from "./icons/components/MoonIcon";
 const App = () => { 
   return (
-    <div className="bg-[url('src/assets/images/bg-mobile-dark.jpg')] bg-no-repeat bg-contain min-h-screen bg-gray-300">
+    <div className="bg-[url('src/assets/images/bg-mobile-dark.jpg')] bg-no-repeat bg-contain min-h-screen ">
       <header className="container mx-auto px-4">
         <div className="flex justify-between">
           <h1 className="uppercase text-white pt-4 text-2xl font-bold tracking-widest">
@@ -17,7 +17,7 @@ const App = () => {
           <input className="w-full text-gray-400 outline-none" type="text" placeholder="Crear Tarea" />
         </form>
       </header>
-      <main className="container mx-auto px-4 mt-6 ">
+      <main className="container mx-auto px-4 mt-6 bg-gray-300">
         <div className=" bg-white rounded-md [&>article]:p-4 [&>article]:border-b-gray-400">
         <article className="flex gap-4  border-b">
           <button className="inline-block border-2 rounded-full  h-5 w-5 flex-none"></button>
@@ -39,10 +39,7 @@ const App = () => {
         </section>
         </div>
         
-        
-      </main>
-
-      <section className="container mx-auto px-4 mt-6">
+        <section className="container mx-auto px-4 mt-6">
         <div className="flex justify-center gap-5 rounded-md bg-white p-4">
         <button className="text-blue-500">all</button>
         <button className="hover:text-blue-500">Active</button>
@@ -51,6 +48,8 @@ const App = () => {
 
       </section>
       <p className="text-center">Drag and Drop</p>
+      </main>
+
     </div>
   );
 };
