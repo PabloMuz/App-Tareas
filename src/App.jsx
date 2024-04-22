@@ -34,7 +34,7 @@ const App = () => {
             <CrossIcon />
           </button>
         </article>
-        <section className="flex justify-between text-gray-400 p-4"> 
+        <section className="flex justify-between text-gray-400 p-4 "> 
           <span>items</span>
           <button>Clear Completed</button>
         </section>
