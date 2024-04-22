@@ -1,8 +1,8 @@
 import CrossIcon from "./icons/components/CrossIcon";
 import Moon from "./icons/components/MoonIcon";
-const App = () => {
+const App = () => { 
   return (
-    <div className="bg-[url('src/assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain min-h-screen bg-gray-300">
+    <div className="bg-[url('src/assets/images/bg-mobile-dark.jpg')] bg-no-repeat bg-contain min-h-screen bg-gray-300">
       <header className="container mx-auto px-4">
         <div className="flex justify-between">
           <h1 className="uppercase text-white pt-4 text-2xl font-bold tracking-widest">
