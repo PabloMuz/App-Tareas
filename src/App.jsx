@@ -64,7 +64,7 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   return (
-    <div className="bg-no-repeat bg-contain min-h-screen bg-gray-300 transition-all duration-500 dark:bg-gray-900 bg-gradient-to-r from-indigo-800 via-purple-500 to-pink-00">
+    <div className="bg-no-repeat bg-contain pt-5 min-h-screen bg-gray-300 transition-all duration-600 dark:bg-gray-900 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gradient-to-r dark:from-blue-900 dark:via-gray-600 dark:to-pink-900">
       <Header />
       <main className="container mx-auto px-4 mt-6 rounded-t md:max-w-xl">
         <AddTask createTask={createTask} />
