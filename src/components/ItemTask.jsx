@@ -1,11 +1,10 @@
 import CheckIcon from "./icons/CheckIcon";
 import CrossIcon from "./icons/CrossIcon";
 
-const ItemTask = ({ task, removeTask, updateTask}) => {
+const ItemTask = ({ task, removeTask, updateTask }) => {
   const { id, title, completed } = task;
   return (
-    <article className="flex gap-4  border-b">
-
+    <article className="flex gap-4 border-b dark:bg-gray-700 transition-all duration-500">
       <button
         className={`border-2 rounded-full h-5 w-5 flex-none ${
           completed
@@ -14,10 +13,12 @@ const ItemTask = ({ task, removeTask, updateTask}) => {
         }`}
         onClick={() => updateTask(id)}
       >
-       {completed && <CheckIcon /> }
+        {completed && <CheckIcon />}
       </button>
-      <p className={`text-gray-600 grow ${completed && "line-through"} `}>{title}</p>
-      <button className="flex-none" onClick={() => removeTask(id)}>
+      <p className={`text-gray-600 dark:text-gray-200 transition-all duration-500 grow ${completed && "line-through"} `}>
+        {title}
+      </p>
+      <button className="fill-[#494C6B] dark:fill-white transition-all duration-500" onClick={() => removeTask(id)}>
         <CrossIcon />
       </button>
     </article>
