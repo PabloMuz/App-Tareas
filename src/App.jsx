@@ -15,11 +15,13 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks])
 
   // Created Task
-  const createTask = (title) => {
+  const createTask = (title, priority, date) => {
     const newTask = {
       id: Date.now(),
       title: title.trim(),
       completed: false,
+      priority: priority,
+      date: date
     };
     setTasks([...tasks, newTask]);
   };

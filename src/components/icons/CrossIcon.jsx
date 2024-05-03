@@ -1,4 +1,4 @@
-const Moon = ({ ...props }) => {
+const Cross = ({ ...props }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,4 +12,4 @@ const Moon = ({ ...props }) => {
   );
 };
 
-export default Moon;
+export default Cross;
