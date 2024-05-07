@@ -1,6 +1,6 @@
 const FilterTask = ({changeFilter, filter}) => {
   return (
-    <section className="mx-auto mt-6">
+    <section className="mx-auto mt-6 shadow-lg">
       <div className="flex justify-center gap-5 rounded-md bg-white p-4 dark:bg-gray-700 transition-all duration-500">
         <button 
          className={`${

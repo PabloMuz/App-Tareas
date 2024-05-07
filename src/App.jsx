@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+
 import AddTask from "./components/AddTask";
 import ComputedTask from "./components/ComputedTask";
 import FilterTask from "./components/FilterTask";
@@ -28,6 +30,9 @@ const App = () => {
         if (dateA && dateB) {
           const dateDiff = dateA - dateB;
           if (dateDiff !== 0) return dateDiff;
+          // If dates are equal, check priority
+          if (a.priority && !b.priority) return -1; // 'a' has priority
+          if (!a.priority && b.priority) return 1; // 'b' has priority
         }
       } else if (a.date && !b.date) {
         // If 'a' has a date but 'b' doesn't, 'a' takes priority
@@ -47,6 +52,8 @@ const App = () => {
     setTasks(sortedTasks);
   }, [filter]);
 
+
+
   // Created Task
   const createTask = (title, priority, date) => {
     const newTask = {
@@ -54,7 +61,7 @@ const App = () => {
       title: title.trim(),
       completed: false,
       priority: priority,
-      date: date
+      date: date,
     };
     setTasks([...tasks, newTask]);
   };
@@ -102,17 +109,17 @@ const App = () => {
       <Header />
       <main className="container mx-auto px-4 mt-6 rounded-t md:max-w-xl">
         <AddTask createTask={createTask} />
-        <ListTask
-          tasks={filteredTasks()}
-          removeTask={removeTask}
-          updateTask={updateTask}
-        />
+          <ListTask
+            tasks={filteredTasks()}
+            removeTask={removeTask}
+            updateTask={updateTask}
+          />
         <ComputedTask countItems={countItems} clearCompleted={clearCompleted} />
         <FilterTask changeFilter={changeFilter} filter={filter} />
       </main>
 
-      <footer className="text-center dark:text-gray-200 mt-6 transition-all duration-500">
-        Drag and Drop
+      <footer className="text-center dark:text-gray-200 mt-6 pb-6 transition-all duration-500">
+        Gestiona tus tareas! 
       </footer>
     </div>
   );

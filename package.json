@@ -1,7 +1,8 @@
 {
   "name": "taskapp",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
+  "description": "This is a task management application, saved locally and organized automatically, developed with React, Node.js and Tailwind.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +11,22 @@
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.js\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloMuz/App-Tareas"
+  },
+  "keywords": [
+    "node",
+    "task",
+    "react"
+  ],
+  "author": "Pablo Andres Muñoz",
+  "bugs": {
+    "url": "https://github.com/PabloMuz/App-Tareas/issues"
+  },
+  "homepage": "https://friendly-apps-task.netlify.app/",
   "dependencies": {
+    "@hello-pangea/dnd": "^16.6.0",
     "flowbite": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
