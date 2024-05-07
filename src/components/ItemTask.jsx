@@ -7,7 +7,7 @@ const ItemTask = ({ task, removeTask, updateTask }) => {
   return (
     <article className="flex flex-row items-center justify-between  w-full gap-4 border-b dark:bg-gray-700 transition-all duration-500">
 
-      <div className="flex flex-row w-2/3 gap-2">
+      <div className="flex flex-row w-3/4 gap-2">
         <button
           className={`border-2 rounded-full h-5 mt-1 w-5 flex-none ${
             completed

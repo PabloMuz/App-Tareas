@@ -12,6 +12,11 @@ const App = () => {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
+    // Synchronize tasks with localStorage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
     const sortedTasks = tasks.slice().sort((a, b) => {
       // Convert dates to Date objects
       const dateA = a.date ? new Date(a.date) : null;
