@@ -45,7 +45,7 @@ const App = () => {
       return 0;
     });
     setTasks(sortedTasks);
-  }, [tasks, filter]);
+  }, [filter]);
 
   // Created Task
   const createTask = (title, priority, date) => {
