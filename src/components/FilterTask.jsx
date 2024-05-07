@@ -9,7 +9,7 @@ const FilterTask = ({changeFilter, filter}) => {
             : "hover:text-blue-500 text-gray-400 dark:text-gray-200 transition-all duration-500"
         }`}
         onClick={() => changeFilter("all")}>
-          All
+          Todas
         </button>
         <button
                className={`${
@@ -19,7 +19,7 @@ const FilterTask = ({changeFilter, filter}) => {
               }`}
           onClick={() => changeFilter("active")}
         >
-          Active
+          Pendientes
         </button>
         <button
                className={`${
@@ -29,7 +29,7 @@ const FilterTask = ({changeFilter, filter}) => {
               }`}
           onClick={() => changeFilter("completed")}
         >
-          Completed
+          Completadas
         </button>
       </div>
     </section>

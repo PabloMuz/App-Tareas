@@ -9,10 +9,38 @@ const initialStateTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 const App = () => {
   const [tasks, setTasks] = useState(initialStateTasks);
-localStorage.setItem("tasks", JSON.stringify(tasks));
-  useEffect(() => {
+  const [filter, setFilter] = useState("all");
 
-  }, [tasks])
+  useEffect(() => {
+    const sortedTasks = tasks.slice().sort((a, b) => {
+      // Convert dates to Date objects
+      const dateA = a.date ? new Date(a.date) : null;
+      const dateB = b.date ? new Date(b.date) : null;
+
+      // Priority hierarchy
+      if (a.date && b.date) {
+        // If both have dates, sort by date
+        if (dateA && dateB) {
+          const dateDiff = dateA - dateB;
+          if (dateDiff !== 0) return dateDiff;
+        }
+      } else if (a.date && !b.date) {
+        // If 'a' has a date but 'b' doesn't, 'a' takes priority
+        return -1;
+      } else if (!a.date && b.date) {
+        // If 'b' has a date but 'a' doesn't, 'b' takes priority
+        return 1;
+      } else {
+        // If neither has a date, prioritize by the 'priority' property
+        if (a.priority && !b.priority) return -1;
+        if (!a.priority && b.priority) return 1;
+      }
+
+      // If priorities are equal or neither has a date, maintain the current order
+      return 0;
+    });
+    setTasks(sortedTasks);
+  }, [tasks, filter]);
 
   // Created Task
   const createTask = (title, priority, date) => {
@@ -48,10 +76,7 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
     setTasks(tasks.filter((task) => !task.completed));
   };
 
-  // Filter Task
-  const [filter, setFilter] = useState("all");
-  const changeFilter = (filter) => setFilter(filter);
-
+  // Function to filter tasks based on the current state
   const filteredTasks = () => {
     switch (filter) {
       case "all":
@@ -65,6 +90,8 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   };
 
+  const changeFilter = (filter) => setFilter(filter);
+
   return (
     <div className="bg-no-repeat bg-contain pt-5 min-h-screen bg-gray-300 transition-all duration-600 dark:bg-gray-900 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gradient-to-r dark:from-blue-900 dark:via-gray-600 dark:to-pink-900">
       <Header />
@@ -74,7 +101,6 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
           tasks={filteredTasks()}
           removeTask={removeTask}
           updateTask={updateTask}
-          filteredTasks={filteredTasks}
         />
         <ComputedTask countItems={countItems} clearCompleted={clearCompleted} />
         <FilterTask changeFilter={changeFilter} filter={filter} />

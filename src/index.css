@@ -2,30 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type=date]::-webkit-datetime-edit-text {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type=date]::-webkit-datetime-edit-month-field{
-  -webkit-appearance: none;
-  display: none;
-}
-input[type=date]::-webkit-datetime-edit-day-field {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type=date]::-webkit-datetime-edit-year-field {
-  -webkit-appearance: none;
-  display: none;
-}
-
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   border-radius: 4px;
-  opacity: 0.6;
-  filter: invert(0.9);
+  opacity: 0;
+  filter: invert(0.1);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  opacity: 1
+  opacity: 0;
+}
+
+input[type="date"] {
+  position: absolute;
+  display: block;
+  content: "";
+  right: 10px;
+  top: 0;background: #fff;
+}
+
+input[type="date"]::before {
+  position: absolute;
+  display: block;
+  content: "\1F4C6";
+  transform: scale(1.3);
 }

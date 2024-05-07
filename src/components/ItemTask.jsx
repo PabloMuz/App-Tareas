@@ -27,8 +27,9 @@ const ItemTask = ({ task, removeTask, updateTask }) => {
         </p>
       </div>
       <div className="flex flex-col justify-end gap-1 items-end min-w-fit">
-        {/* Mostrar la fecha de la tarea */}
-        <span
+        
+         {/* Display the date of the task */}
+         <span
           className={`${completed && "line-through"} ${
             date
               ? "flex bg-green-400 px-3 rounded-lg text-gray-900 text-sm w-100px"
@@ -38,7 +39,7 @@ const ItemTask = ({ task, removeTask, updateTask }) => {
           {date}
         </span>
 
-        {/* Mostrar si la tarea tiene prioridad */}
+        {/* Show whether the task has priority */}
         <span
           className={`bg-yellow-400 ${completed && "line-through"} ${
             priority
