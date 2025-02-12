@@ -6,6 +6,7 @@ import ComputedTask from "./components/ComputedTask";
 import FilterTask from "./components/FilterTask";
 import Header from "./components/Header";
 import ListTask from "./components/ListTask";
+import ImageSection from "./components/ImageSection";
 
 const initialStateTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
