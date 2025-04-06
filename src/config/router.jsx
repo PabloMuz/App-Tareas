@@ -2,8 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import LayoutRoot from "../layout/LayoutRoot";
 import App from "../App";
 import LayoutPrivate from "../layout/LayoutPrivate";
-import Login from "../components/Login";  
+import Login from "../components/Login";
 import Register from "../components/Register";
+import NotFound from "../components/NotFound"; // 👈 Asegúrate de crear este componente
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <App />,
+      },
+      {
+        path: "*", // 👈 Ruta 404 dentro del layout root
+        element: <NotFound />,
       },
     ],
   },
@@ -35,5 +40,5 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
     ],
-  }
+  },
 ]);
