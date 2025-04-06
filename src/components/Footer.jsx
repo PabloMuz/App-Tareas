@@ -37,7 +37,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white text-center mt-10 px-4 pb-4 sm:pb-4">
+    <footer className="text-white text-center px-8 pb-10 pt-4 sm:pb-4">
       <p className="text-sm sm:text-base font-medium tracking-wide">
         {getMessage()}
       </p>

@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      height: {
+        'fill-available': '-webkit-fill-available',
+        'screen-safe': '100vh', 
+      },
+      minHeight: {
+        'fill-available': '-webkit-fill-available',
+      },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
       },
