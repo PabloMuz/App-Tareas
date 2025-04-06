@@ -14,7 +14,7 @@ const Footer = () => {
         "💪 ¡Gestiona tus tareas y alcanza tus metas!",
         "📝 Organiza tu día, conquista tu semana.",
         "🚀 Tu productividad comienza aquí.",
-        "✅ ¡Cada tarea completada te acerca a tu meta!"
+        "✅ ¡Cada tarea completada te acerca a tu meta!",
       ];
       return messages[Math.floor(Math.random() * messages.length)];
     }
@@ -24,7 +24,7 @@ const Footer = () => {
         "✨ Crea tu cuenta y empieza a organizar tu vida.",
         "🧠 Tu nueva rutina comienza con un registro.",
         "🌱 Da el primer paso hacia la productividad.",
-        "📌 Regístrate para tener todo bajo control."
+        "📌 Regístrate para tener todo bajo control.",
       ];
       return messages[Math.floor(Math.random() * messages.length)];
     }
@@ -37,7 +37,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white text-center mt-10 px-4 pb-9">
+    <footer className="text-white text-center mt-10 px-4 pb-4 sm:pb-6">
       <p className="text-sm sm:text-base font-medium tracking-wide animate-fade-in">
         {getMessage()}
       </p>

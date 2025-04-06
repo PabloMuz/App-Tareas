@@ -4,12 +4,12 @@ import Footer from "../components/Footer";
 
 const LayoutRoot = () => {
   return (
-    <div className="bg-no-repeat bg-contain pt-5 min-h-screen bg-gray-300 transition-all duration-600 dark:bg-gray-900 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gradient-to-r dark:from-blue-900 dark:via-gray-600 dark:to-pink-900">
+    <div className="flex flex-col min-h-screen bg-no-repeat bg-contain bg-gray-300 transition-all duration-600 dark:bg-gray-900 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gradient-to-r dark:from-blue-900 dark:via-gray-600 dark:to-pink-900">
       <Header />
-      <main className="container mx-auto px-4 mt-6 rounded-t md:max-w-xl">
+      <main className="flex-grow container mx-auto px-4 mt-6 rounded-t md:max-w-xl">
         <Outlet />
       </main>
-<Footer />
+      <Footer />
     </div>
   );
 };
