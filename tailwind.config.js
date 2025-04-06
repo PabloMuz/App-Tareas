@@ -1,17 +1,22 @@
-// tailwind.config.js
-
-module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
-      backgroundImage: theme => ({
-        'mobile-light': "url('src/assets/images/bg-mobile-light.jpg')",
-        'mobile-dark': "url('src/assets/images/bg-mobile-dark.jpg')",
-        'desktop-light': "url('src/assets/images/bg-desktop-light.jpg')",
-        'desktop-dark': "url('src/assets/images/bg-desktop-dark.jpg')",
-      }),
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0, transform: 'translateY(6px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+      },
     },
   },
+  darkMode: "class",
   plugins: [],
-  darkMode: 'class',
 };

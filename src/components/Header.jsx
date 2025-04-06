@@ -1,11 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 import Moon from "./icons/MoonIcon";
 import Sun from "./icons/SunIcon";
-
-const initialStateDarkMode = localStorage.getItem('theme') === 'dark';
+import UserIcon from "./icons/UserIcon";
+import HomeIcon from "./icons/HomeIcon";
+import RegisterIcon from "./icons/RegisterIcon";
+import LogoutIcon from "./icons/LogoutIcon";
+import { UserContext } from "../context/UserContext";
+import { logOut } from "../config/firebase";
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(initialStateDarkMode);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isLoginPage = location.pathname === "/login";
+  const isRegisterPage = location.pathname === "/register";
+
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  const { user, isLoggedIn, setUser } = useContext(UserContext);
 
   useEffect(() => {
     if (darkMode) {
@@ -16,20 +30,89 @@ const Header = () => {
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
-  
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      setUser(null);
+      navigate("/login");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
+
   return (
     <header className="container mx-auto px-4 md:max-w-xl">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <h1 className="uppercase text-white pt-4 text-2xl font-bold tracking-widest">
-          Tareas
+          {isLoginPage
+            ? "Iniciar Sesión"
+            : isRegisterPage
+            ? "Registro"
+            : "Tareas"}
         </h1>
-        <button onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? (
-            <Sun className="fill-white" />
+
+        <div className="flex items-center gap-3 pt-4">
+          {/* Botón dark mode */}
+          <button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <Sun className="fill-white" /> : <Moon className="fill-white" />}
+          </button>
+
+          <div className="w-px h-6 bg-white opacity-50" />
+
+          {/* Botón dinámico */}
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              title="Cerrar sesión"
+              className="p-1 rounded-md transition-all hover:scale-110"
+            >
+              <LogoutIcon className="fill-white w-8 h-8" />
+            </button>
           ) : (
-            <Moon className="fill-white" />
+            <>
+              {isLoginPage && (
+                <>
+                  <NavLink
+                    to="/"
+                    title="Ir al Home"
+                    className="p-1 rounded-md transition-all hover:scale-110"
+                  >
+                    <HomeIcon />
+                  </NavLink>
+                  <div className="w-px h-6 bg-white opacity-50" />
+                  <NavLink
+                    to="/register"
+                    title="Registrarse"
+                    className="p-1 rounded-md transition-all hover:scale-110"
+                  >
+                    <RegisterIcon />
+                  </NavLink>
+                </>
+              )}
+
+              {isRegisterPage && (
+                <NavLink
+                  to="/"
+                  title="Ir al Home"
+                  className="p-1 rounded-md transition-all hover:scale-110"
+                >
+                  <HomeIcon />
+                </NavLink>
+              )}
+
+              {!(isLoginPage || isRegisterPage) && (
+                <NavLink
+                  to="/login"
+                  title="Ir a Login"
+                  className="p-1 rounded-md transition-all hover:scale-110"
+                >
+                  <UserIcon className="fill-white w-9 h-9 translate-y-[5px]" />
+                </NavLink>
+              )}
+            </>
           )}
-        </button>
+        </div>
       </div>
     </header>
   );
