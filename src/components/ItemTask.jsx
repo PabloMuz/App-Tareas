@@ -41,7 +41,7 @@ const ItemTask = ({ task, removeTask, updateTask }) => {
 
         {/* Show whether the task has priority */}
         <span
-          className={`bg-yellow-700 ${completed && "line-through"} ${
+          className={`bg-orange-400 ${completed && "line-through"} ${
             priority
               ? "flex bg-orange-400 text-white dark:text-black px-2 py-1 rounded-md dark:bg-yellow-600"
               : "hidden"
