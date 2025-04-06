@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: transparent; 
 }
-
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
