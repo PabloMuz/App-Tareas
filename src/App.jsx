@@ -4,26 +4,11 @@ import ComputedTask from "./components/ComputedTask";
 import FilterTask from "./components/FilterTask";
 import ListTask from "./components/ListTask";
 
-// 🔔 IMPORTS FCM
-import {
-  requestPermissionAndGetToken,
-  listenToForegroundMessages,
-} from "./config/firebase";
-
 const initialStateTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 const App = () => {
   const [tasks, setTasks] = useState(initialStateTasks);
   const [filter, setFilter] = useState("all");
-
-  // 🔔 Pedir permiso y escuchar mensajes en foreground
-  useEffect(() => {
-    requestPermissionAndGetToken();
-    listenToForegroundMessages((payload) => {
-      const { title, body } = payload.notification;
-      alert(`🔔 Notificación:\n${title}\n${body}`);
-    });
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
