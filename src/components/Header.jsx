@@ -55,20 +55,40 @@ const Header = () => {
         <div className="flex items-center gap-3 pt-4">
           {/* Botón dark mode */}
           <button onClick={() => setDarkMode(!darkMode)}>
-            {darkMode ? <Sun className="fill-white" /> : <Moon className="fill-white" />}
+            {darkMode ? (
+              <Sun className="fill-white" />
+            ) : (
+              <Moon className="fill-white" />
+            )}
           </button>
 
           <div className="w-px h-6 bg-white opacity-50" />
 
           {/* Botón dinámico */}
           {isLoggedIn ? (
-            <button
-              onClick={handleLogout}
-              title="Cerrar sesión"
-              className="p-1 rounded-md transition-all hover:scale-110"
-            >
-              <LogoutIcon className="fill-white w-8 h-8" />
-            </button>
+            <>
+              {user?.photoURL && (
+                <img
+                  src={user.photoURL}
+                  alt="Avatar"
+                  className="w-8 h-8 rounded-full ring-2 ring-white"
+                  title={user.displayName || "Usuario"}
+                />
+              )}
+              <span className="text-white font-medium hidden sm:inline">
+                {user?.displayName?.split(" ")[0]}
+              </span>
+
+              <div className="w-px h-6 bg-white opacity-50" />
+
+              <button
+                onClick={handleLogout}
+                title="Cerrar sesión"
+                className="p-1 rounded-md transition-all hover:scale-110"
+              >
+                <LogoutIcon className="fill-white w-8 h-8" />
+              </button>
+            </>
           ) : (
             <>
               {isLoginPage && (

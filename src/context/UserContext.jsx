@@ -11,12 +11,23 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false); // <- marcamos carga terminada
+      if (currentUser) {
+        const { displayName, email, uid, photoURL } = currentUser;
+        setUser({
+          displayName,
+          email,
+          uid,
+          photoURL,
+        });
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
     });
-
+  
     return unsubscribe;
   }, []);
+  
 
   const isLoggedIn = !!user;
 
