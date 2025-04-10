@@ -22,6 +22,7 @@ Welcome to Personal Task Manager! This application helps you organize and manage
   - Node.js with Express.js for server-side logic
   - JSON Web Tokens (JWT) for user authentication
   
+  
 
 ## Contributions
 
@@ -35,3 +36,8 @@ This project was developed by Pablo Muñoz, guided by Udemy and Bluuweb courses.
 
 [Preview App](https://friendly-apps-task.netlify.app/)
 
+## Seguridad y Variables de Entorno
+
+El archivo `firebase-messaging-sw.js` contiene claves públicas necesarias para que Firebase Cloud Messaging funcione correctamente en producción. Aunque son visibles, **no representan un riesgo de seguridad**, ya que son requeridas por cualquier cliente web de Firebase.
+
+Este archivo ha sido excluido del repositorio (`.gitignore`) para evitar advertencias automáticas de GitHub sobre claves expuestas. Se debe recrear manualmente en producción con las variables necesarias (ver documentación interna o sección de despliegue).
